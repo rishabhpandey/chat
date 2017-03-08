@@ -90,7 +90,7 @@
             $scope.form.user = $('#user1').val()
             $http.post('chat',$scope.form)
                 .then(function(response){
-
+				$scope.form= {};
               });
           }
           $scope.getChat = function()
