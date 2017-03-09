@@ -14,3 +14,4 @@
 Route::get('/', 'SaveChatController@index');
 Route::post('chat','SaveChatController@store');
 Route::get('getchat','SaveChatController@getMessages');
+Route::get('getUsers','SaveChatController@getUsers');

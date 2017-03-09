@@ -27,5 +27,10 @@ class SaveChatController extends Controller
     {
           return ChatMessage::join('users_all','users_all.id','=','chats_message.user_id')->get();
     }
+	
+	public function getUsers()
+	{
+		return User::all();
+	}
 
 }
