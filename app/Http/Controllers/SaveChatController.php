@@ -9,10 +9,13 @@ use App\ChatMessage;
 
 class SaveChatController extends Controller
 {
+    public function login()
+    {
+        return view('login');
+    }
 
     public function index(User $users)
     {
-
         $id = $users::where('id',2)->first();
         return view('welcome',['user' =>$id]);
     }
@@ -25,12 +28,12 @@ class SaveChatController extends Controller
 
     public function getMessages(ChatMessage $all)
     {
-          return ChatMessage::join('users_all','users_all.id','=','chats_message.user_id')->get();
+        return ChatMessage::join('users_all','users_all.id','=','chats_message.user_id')->get();
     }
 	
-	public function getUsers()
-	{
-		return User::all();
-	}
-
+    public function getUsers()
+    {
+        return User::all();
+    }
+    
 }
