@@ -9,13 +9,14 @@ use App\ChatMessage;
 
 class SaveChatController extends Controller
 {
-    public function login()
-    {
+    public function login(User $users)
+    { 
         return view('login');
     }
 
-    public function index(User $users)
+    public function index(Request $request, User $users)
     {
+        dd($request->get('username'));
         $id = $users::where('id',2)->first();
         return view('welcome',['user' =>$id]);
     }
