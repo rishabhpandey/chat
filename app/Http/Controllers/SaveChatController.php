@@ -10,15 +10,29 @@ use App\ChatMessage;
 class SaveChatController extends Controller
 {
     public function login(User $users)
-    { 
+    {
         return view('login');
+    }
+
+    public function chat(Request $request)
+    {
+        $user  = $request->all();
+        return view('welcome');
     }
 
     public function index(Request $request, User $users)
     {
-        dd($request->get('username'));
-        $id = $users::where('id',2)->first();
-        return view('welcome',['user' =>$id]);
+        $name = $request->get('username');
+        $pass = $request->get('password');
+        $userdata =  $users::where('user_name',$name)->where('password',$pass)->first();
+        if($userdata)
+        {
+            $userInfo = $users::where('id',$userdata->id)->first();
+            return $userInfo;
+        }else{
+           return['msg' =>'Ye chat system aapke aukaat k bahar hai , use slack.'];
+        }
+
     }
 
     public function store(Request $request)
@@ -31,10 +45,10 @@ class SaveChatController extends Controller
     {
         return ChatMessage::join('users_all','users_all.id','=','chats_message.user_id')->get();
     }
-	
+
     public function getUsers()
     {
         return User::all();
     }
-    
+
 }

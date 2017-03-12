@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
-    
+
     <head>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -96,7 +96,7 @@
                   }
                   $scope.getChat = function()
                   {
-                    $http.get('getchat')
+                    $http.post('getchat')
                         .then(function(response){
                             $scope.users = response.data;
                       });
@@ -116,12 +116,12 @@
                 }, 1200);
             });
         </script>
-        
+
     </head>
     <body>
-        
+
         <div class="container" ng-app="myApp" ng-controller="myCtrl" style="background-color:black;">
-          <div class="row">  
+          <div class="row">
             <div class="col-md-5" style="width:50%;">
               <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -165,7 +165,6 @@
                 <form ng-submit = "submit()">
                     <div class="panel-footer">
                       <div class="input-group">
-                        <input type="hidden" id="user1"value ="{{$user->id}}" ng-model='form.user_id' >
                         <input id="btn-input" type="text" ng-model="form.chatMsg" class="form-control input-sm" placeholder="Type your message here...">
                         <span class="input-group-btn">
                             <button type="submit" class="btn btn-warning btn-sm" ng-c id="btn-chat">
@@ -179,7 +178,7 @@
             <div>
                 <div class="panel-body">
                 <form ng-submit = "submit()"></form>
-                  <ul class="chat"> 
+                  <ul class="chat">
                     <div class="col-md-5" style="width:50%;" >
                       <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -191,9 +190,9 @@
                             <div class="chat-body clearfix">
                                 <div class="header">
                                  <strong class="primary-font">@{{user.user_name}}</strong> <small class="pull-right text-muted">
-                                </div>  
+                                </div>
                             </div>
-                            </ul>            
+                            </ul>
                         </div>
                       </div>
                     </div>
@@ -202,7 +201,7 @@
             </div>
           </div>
         </div>
-        
+
     </body>
-    
+
 </html>
