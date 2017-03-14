@@ -13,7 +13,13 @@ class SaveChatController extends Controller
     {
         return view('login');
     }
-
+	
+	public function getLogout(){
+        Auth::logout();
+        Session::flush();
+        return Redirect::to('login');
+    }
+	
     public function chat(Request $request)
     {
         $user  = $request->all();

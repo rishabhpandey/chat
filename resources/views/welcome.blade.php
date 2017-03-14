@@ -96,7 +96,7 @@
                   }
                   $scope.getChat = function()
                   {
-                    $http.post('getchat')
+                    $http.get('getchat')
                         .then(function(response){
                             $scope.users = response.data;
                       });
@@ -118,9 +118,11 @@
         </script>
 
     </head>
+	<br>
     <body>
 
         <div class="container" ng-app="myApp" ng-controller="myCtrl" style="background-color:black;">
+		<br>
           <div class="row">
             <div class="col-md-5" style="width:50%;">
               <div class="panel panel-primary">
@@ -131,8 +133,8 @@
                             <span class="glyphicon glyphicon-chevron-down"></span>
                         </button>
                         <ul class="dropdown-menu slidedown">
-                            <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-refresh">
-                            </span>Refresh(abhi ni bna sale bnd karo isko)</a></li>
+                            <li><a href="javascript:void()" onclick="window.location.reload()"><span class="glyphicon glyphicon-refresh">
+                            </span>Refresh</a></li>
                             <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-ok-sign">
                             </span>Available(abhi ni bna sale bnd karo isko)</a></li>
                             <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-remove">
@@ -140,8 +142,8 @@
                             <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-time"></span>
                                 Away(abhi ni bna sale bnd karo isko)</a></li>
                             <li class="divider"></li>
-                            <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-off"></span>
-                                Sign Out(abhi ni bna sale bnd karo isko)</a></li>
+                            <li><a href="{{ url('/') }}"><span class="glyphicon glyphicon-off"></span>
+                                Sign Out</a></li>
                         </ul>
                     </div>
                 </div>
