@@ -19,7 +19,7 @@ class SaveChatController extends Controller
         Session::flush();
         return Redirect::to('login');
     }
-	
+		
     public function chat(Request $request)
     {
         $user  = $request->all();
